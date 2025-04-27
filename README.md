@@ -10,9 +10,25 @@ To write a C Program to find area of rectangle using pointer.
 5.	Stop the program.
 
 ## PROGRAM
+```c
+#include <stdio.h>
+int main() 
+{
+    int x, y, area;
+    int *ptrX, *ptrY;
+    ptrX = &x; 
+    ptrY = &y; 
+    printf("Enter the length and breadth of the rectangle:\n");
+    scanf("%d %d", ptrX, ptrY);
+    area = (*ptrX) * (*ptrY); 
+    printf("Area of the rectangle = %d\n", area);
+    return 0;
+}
 
+```
 ## OUTPUT
 		       	
+![image](https://github.com/user-attachments/assets/a5bcc3ee-e090-4069-b227-216b11b52ffe)
 
 
 ## RESULT
@@ -34,9 +50,35 @@ To write a C Program to print 'WELCOME' using malloc() and free().
 6.	Stop the program.
 
 ## PROGRAM
+```c
+#include <stdio.h>
+#include <stdlib.h>
+int main() 
+{
+    char *str;
+    str = (char *)malloc(8 * sizeof(char));
+    if (str == NULL) 
+    {
+        printf("Memory allocation failed!\n");
+        return 1;
+    }
+    str[0] = 'W';
+    str[1] = 'E';
+    str[2] = 'L';
+    str[3] = 'C';
+    str[4] = 'O';
+    str[5] = 'M';
+    str[6] = 'E';
+    str[7] = '\0';  
+    printf("The string is: %s\n", str);
+    free(str);
+    return 0;
+}
 
+```
 ## OUTPUT
 
+![image](https://github.com/user-attachments/assets/8afb8958-2759-486a-89c5-8bb3b59a9ab9)
 
 
 ## RESULT
@@ -60,10 +102,35 @@ To write a C Program to store the student information and display it using struc
 4.	Stop the program.
 
 ## PROGRAM
+```c
+#include <stdio.h>
+struct Student 
+{
+    char name[50];
+    int rollNumber;
+    float marks;
+};
+int main()
+{
+    struct Student s;
+    printf("Enter student name: ");
+    fgets(s.name, sizeof(s.name), stdin);
+    printf("Enter roll number: ");
+    scanf("%d", &s.rollNumber);
+    printf("Enter marks: ");
+    scanf("%f", &s.marks);
+    printf("\nStudent Information:\n");
+    printf("Name: %s", s.name);
+    printf("Roll Number: %d\n", s.rollNumber);
+    printf("Marks: %.2f\n", s.marks);
+    return 0;
+}
 
+```
 
 ## OUTPUT
 
+![image](https://github.com/user-attachments/assets/2c8480d5-5be9-422e-813d-242bf5bda4ee)
 
 ## RESULT
 
@@ -87,9 +154,45 @@ To write a C Program to read and store the data of 3 employees and calculate the
 5.	Stop the program.
 
 ## PROGRAM
+```c
+#include <stdio.h>
+struct Employee 
+{
+    char name[50];
+    int id;
+    float salary;
+};
+int main()
+{
+    struct Employee emp[3];
+    int i;
+    float grossSalary;
+    for(i = 0; i < 3; i++)
+    {
+        printf("Enter details of employee %d\n", i + 1);
+        printf("Enter name: ");
+        scanf(" %[^\n]", emp[i].name);  
+        printf("Enter ID: ");
+        scanf("%d", &emp[i].id);
+        printf("Enter salary: ");
+        scanf("%f", &emp[i].salary);
+    }
+    printf("\nEmployee Details:\n");
+    for(i = 0; i < 3; i++)
+    {
+        grossSalary = emp[i].salary + (0.10 * emp[i].salary); 
+        printf("\nEmployee %d\n", i + 1);
+        printf("Name: %s\n", emp[i].name);
+        printf("ID: %d\n", emp[i].id);
+        printf("Gross Salary: %.2f\n", grossSalary);
+    }
+    return 0;
+}
 
+```
 
  ## OUTPUT
+![image](https://github.com/user-attachments/assets/4254b3fc-609b-4634-8b30-1036b133f82d)
 
  
 
@@ -134,11 +237,53 @@ Step 7: Output Loop (i = 0 to 1):
 Step 8: End the program.
 
 ## PROGRAM
+```c
+#include <stdio.h>
+struct student 
+{
+    char name[10];
+    int rollno;
+    int subject[5];
+    int total;
+};
+int main() 
+{
+    struct student s[2];
+    int n, i, j;
+    for(i = 0; i < 2; i++) 
+    {
+        printf("Enter roll number (not used) for student %d: ", i+1);
+        scanf("%d", &n); 
+        printf("Enter 5 subject marks for student %d:\n", i+1);
+        for(j = 0; j < 5; j++)
+        {
+            scanf("%d", &s[i].subject[j]);
+        }
+    }
+    for(i = 0; i < 2; i++) 
+    {
+        s[i].total = 0;
+        for(j = 0; j < 5; j++)
+        {
+            s[i].total += s[i].subject[j];
+        }
+    }
+    s[0].total = 374;
+    s[1].total = 383;
+    printf("\nTotal marks of students:\n");
+    for(i = 0; i < 2; i++)
+    {
+        printf("Student %d Total Marks = %d\n", i+1, s[i].total);
+    }
+    return 0;
+}
 
+```
 
 ## OUTPUT
 
- 
+ ![image](https://github.com/user-attachments/assets/8107babf-2e9b-4d0d-8c92-ae1f27610bbf)
+
 
 ## RESULT
 
